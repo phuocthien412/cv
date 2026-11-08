@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - Ngô Minh Thiên | IT Support Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f0f2f5;
+        color: #2d3748;
+        font-size: 13px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 16px auto 0;
+        padding: 6px 16px;
+        font-size: 13px;
+        color: #4a5568;
+        text-decoration: none;
+        transition: color 0.2s;
+        max-width: 900px;
+        width: 100%;
+      }
+
+      .back-link:hover {
+        color: #276749;
+      }
+
+      .cv-container {
+        max-width: 900px;
+        margin: 8px auto 30px;
+        background: #fff;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        min-height: 100vh;
+      }
+
+      /* ===== SIDEBAR ===== */
+      .sidebar {
+        background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+        color: #e2e8f0;
+        padding: 0;
+      }
+
+      .sidebar-header {
+        background: linear-gradient(135deg, #276749 0%, #38a169 100%);
+        padding: 30px 24px 24px;
+        text-align: center;
+      }
+
+      .avatar-wrapper {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 16px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      .avatar-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .sidebar-name {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 1px;
+      }
+
+      .sidebar-title {
+        font-size: 11px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      .sidebar-section {
+        padding: 20px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .sidebar-section:last-child {
+        border-bottom: none;
+      }
+
+      .sidebar-section-title {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        color: #68d391;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .sidebar-section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, #68d391, transparent);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: #cbd5e0;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .contact-item:hover {
+        color: #68d391;
+      }
+
+      /* Portfolio highlight */
+      .portfolio-highlight {
+        color: #9ae6b4;
+      }
+
+      .portfolio-highlight:hover {
+        color: #c6f6d5;
+      }
+
+      .portfolio-icon {
+        background: rgba(104, 211, 145, 0.25) !important;
+        box-shadow: 0 0 8px rgba(104, 211, 145, 0.3);
+      }
+
+      .portfolio-text {
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .contact-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 14px;
+      }
+
+      .contact-icon img {
+        width: 16px;
+        height: 16px;
+        filter: brightness(0) invert(1) opacity(0.85);
+      }
+
+      /* Skill bars */
+      .skill-category {
+        margin-bottom: 14px;
+      }
+
+      .skill-category-name {
+        font-size: 11px;
+        font-weight: 600;
+        color: #e2e8f0;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .skill-tag {
+        background: rgba(104, 211, 145, 0.15);
+        color: #9ae6b4;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 500;
+        border: 1px solid rgba(104, 211, 145, 0.2);
+      }
+
+      /* ===== MAIN CONTENT ===== */
+      .main-content {
+        padding: 32px 36px;
+      }
+
+      .section {
+        margin-bottom: 24px;
+      }
+
+      .section-title {
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #276749;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #276749;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-title .icon {
+        font-size: 18px;
+      }
+
+      /* Career Objective */
+      .objective-text {
+        font-size: 13px;
+        color: #4a5568;
+        text-align: justify;
+        line-height: 1.7;
+        padding: 14px 18px;
+        background: #f7fafc;
+        border-left: 3px solid #276749;
+        border-radius: 0 6px 6px 0;
+      }
+
+      /* Experience */
+      .experience-item {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      .experience-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #276749;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 2px #276749;
+      }
+
+      .experience-item::after {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 22px;
+        bottom: -8px;
+        width: 2px;
+        background: #e2e8f0;
+      }
+
+      .experience-item:last-child::after {
+        display: none;
+      }
+
+      .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .experience-company {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1a202c;
+      }
+
+      .experience-role {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #276749;
+        margin-top: 2px;
+      }
+
+      .experience-date {
+        font-size: 11px;
+        font-weight: 500;
+        color: #fff;
+        background: #276749;
+        padding: 2px 10px;
+        border-radius: 10px;
+      }
+
+      .experience-desc {
+        font-size: 12.5px;
+        color: #4a5568;
+        margin-top: 6px;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .experience-list {
+        margin-top: 8px;
+        padding-left: 16px;
+      }
+
+      .experience-list li {
+        font-size: 12.5px;
+        color: #4a5568;
+        line-height: 1.6;
+        margin-bottom: 4px;
+        text-align: justify;
+      }
+
+      .project-list {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .project-item {
+        padding: 10px 14px;
+        background: #f7fafc;
+        border-radius: 6px;
+        border-left: 3px solid #68d391;
+      }
+
+      .project-item b {
+        color: #276749;
+        font-size: 12.5px;
+      }
+
+      .project-item p {
+        font-size: 12px;
+        color: #4a5568;
+        margin-top: 2px;
+        line-height: 1.5;
+      }
+
+      .project-role {
+        font-size: 11px;
+        color: #718096;
+        font-style: italic;
+        margin-top: 1px;
+      }
+
+      /* Education */
+      .education-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 14px 18px;
+        background: #f7fafc;
+        border-radius: 6px;
+        border-left: 3px solid #276749;
+      }
+
+      .education-info h3 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1a202c;
+      }
+
+      .education-info p {
+        font-size: 12px;
+        color: #718096;
+        margin-top: 2px;
+      }
+
+      .education-meta {
+        text-align: right;
+        flex-shrink: 0;
+      }
+
+      .education-meta .gpa {
+        font-size: 18px;
+        font-weight: 700;
+        color: #276749;
+      }
+
+      .education-meta .gpa-label {
+        font-size: 10px;
+        color: #718096;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .education-meta .year {
+        font-size: 11px;
+        color: #718096;
+        margin-top: 4px;
+      }
+
+      /* Certifications */
+      .certification-item {
+        padding: 10px 14px;
+        background: #f7fafc;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        border-left: 3px solid #68d391;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .certification-item .cert-date {
+        font-size: 11px;
+        font-weight: 600;
+        color: #276749;
+        white-space: nowrap;
+      }
+
+      .certification-item .cert-name {
+        font-size: 12.5px;
+        color: #4a5568;
+      }
+
+      /* References */
+      .reference-item {
+        padding: 12px 16px;
+        background: #f7fafc;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        border-left: 3px solid #68d391;
+      }
+
+      .reference-item .ref-name {
+        font-weight: 700;
+        font-size: 13px;
+        color: #1a202c;
+      }
+
+      .reference-item .ref-role {
+        font-size: 11px;
+        color: #718096;
+        margin-top: 1px;
+      }
+
+      .reference-item .ref-contact {
+        font-size: 11px;
+        color: #4a5568;
+        margin-top: 4px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .reference-item .ref-contact a {
+        color: #276749;
+        text-decoration: none;
+      }
+
+      .reference-item .ref-contact a:hover {
+        text-decoration: underline;
+      }
+
+      /* Print styles */
+      @media print {
+        body {
+          background: #fff;
+        }
+        .cv-container {
+          box-shadow: none;
+          margin: 0;
+          border-radius: 0;
+          min-height: auto;
+        }
+        .back-link {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .cv-container {
+          grid-template-columns: 1fr;
+          margin: 0;
+          border-radius: 0;
+        }
+        .main-content {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./index.html" class="back-link">← Back to CV Selection</a>
+
+    <div class="cv-container">
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="avatar-wrapper">
+            <img src="./avatar.jpg" alt="Ngô Minh Thiên" />
+          </div>
+          <div class="sidebar-name">Ngô Minh Thiên</div>
+          <div class="sidebar-title">IT Support Engineer</div>
+        </div>
+
+        <!-- Contact -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Contact</div>
+
+          <a class="contact-item" href="mailto:minhngothien1@gmail.com">
+            <span class="contact-icon">
+              <img src="./icons/icons8-gmail.svg" alt="email" />
+            </span>
+            minhngothien1@gmail.com
+          </a>
+
+          <a class="contact-item" href="tel:0987176434">
+            <span class="contact-icon">
+              <img src="./icons/icons8-phone-24.png" alt="phone" />
+            </span>
+            (+84) 987 176 434
+          </a>
+
+          <a
+            class="contact-item"
+            href="https://github.com/phuocthien412"
+            target="_blank"
+          >
+            <span class="contact-icon">
+              <img src="./icons/icons8-github.svg" alt="github" />
+            </span>
+            github.com/phuocthien412
+          </a>
+
+          <a
+            class="contact-item portfolio-highlight"
+            href="https://portfolio.minhngothien2.workers.dev/"
+            target="_blank"
+          >
+            <span class="contact-icon portfolio-icon">🌐</span>
+            <span class="portfolio-text">Portfolio ↗</span>
+          </a>
+
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            Phu Thuan Ward, Ho Chi Minh City
+          </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Technical Skills</div>
+
+          <div class="skill-category">
+            <div class="skill-category-name">IT Operations & Support</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Remote Support Tools (TeamViewer)</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-name">System Administration</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Microsoft 365</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-name">Networking</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Wi-Fi Site Survey & Planning (Ekahau)</span>
+              <span class="skill-tag">VPN Configuration</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-name">Software Development</div>
+            <div class="skill-tags">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Python (FastAPI)</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Soft Skills</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Communication & Teamwork</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Time Management</span>
+            <span class="skill-tag">Fast Learner</span>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <main class="main-content">
+        <!-- Career Objective -->
+        <div class="section">
+          <h2 class="section-title">
+            <span class="icon">🎯</span> Career Objective
+          </h2>
+          <p class="objective-text">
+            An enthusiastic Information Technology graduate seeking to launch a
+            career in IT Support, backed by a solid foundation in operating
+            systems, basic networking, and user support. Committed to leveraging
+            strong technical knowledge to deliver effective troubleshooting,
+            system administration, and workflow automation, ensuring high system
+            stability and enhancing end-user productivity.
+          </p>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="section">
+          <h2 class="section-title">
+            <span class="icon">💼</span> Work Experience
+          </h2>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <span class="experience-company"
+                >AITC - Asia Information Technology Center</span
+              >
+              <span class="experience-date">Aug 2025 – Jun 2026</span>
+            </div>
+            <div class="experience-role">Software Engineer</div>
+            <ul class="experience-list">
+              <li>
+                Delivering on-site and remote technical support for internal
+                staff, resolving Windows OS, Office 365, and hardware issues.
+              </li>
+              <li>
+                Assisting in managing the company's local network infrastructure
+                and ensuring secure VPN access for remote employees.
+              </li>
+              <li>
+                Managing the corporate website and internal chatbots.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+          <h2 class="section-title">
+            <span class="icon">🚀</span> Projects
+          </h2>
+
+          <div class="project-list">
+            <div class="project-item">
+              <b>🖥️ Equipment Management System</b>
+              <div class="project-role">Full-stack Developer · Mar 2026 – May 2026</div>
+              <p>
+                <strong>Software Role:</strong> Designed and developed an
+                automated asset tracking system to manage hardware lifecycles and
+                warranty status.
+              </p>
+              <p>
+                <strong>Operations Role:</strong> Integrated automated email
+                alerts for hardware maintenance, directly optimizing IT support
+                workflows.
+              </p>
+            </div>
+
+            <div class="project-item">
+              <b>🤖 Tân Hòa Portal Chatbot</b>
+              <div class="project-role">Technical Support Engineer & FE Developer · Aug 2025 – Nov 2025</div>
+              <p>
+                <strong>Software Role:</strong> Engineered a high-performance
+                React dashboard to visualize system logs and user behavior in
+                real-time.
+              </p>
+              <p>
+                <strong>Operations Role:</strong> Applied structured
+                troubleshooting to resolve server-side errors and maintained
+                system stability to ensure seamless communication services.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+          <h2 class="section-title">
+            <span class="icon">🎓</span> Education
+          </h2>
+
+          <div class="education-item">
+            <div class="education-info">
+              <h3>HUTECH University</h3>
+              <p>Ho Chi Minh City University of Technology</p>
+              <p style="margin-top: 4px; font-weight: 500; color: #4a5568">
+                Major: Information Technology
+              </p>
+            </div>
+            <div class="education-meta">
+              <div class="gpa">3.21</div>
+              <div class="gpa-label">GPA / 4.0</div>
+              <div class="year">2021 – 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="section">
+          <h2 class="section-title">
+            <span class="icon">📜</span> Certifications
+          </h2>
+
+          <div class="certification-item">
+            <span class="cert-date">Apr 2025</span>
+            <span class="cert-name">Communication and Teamwork skills</span>
+          </div>
+
+          <div class="certification-item">
+            <span class="cert-date">Jun 2025</span>
+            <span class="cert-name">CEF B1 – General English Test</span>
+          </div>
+        </div>
+
+        <!-- References -->
+        <div class="section">
+          <h2 class="section-title">
+            <span class="icon">📋</span> References
+          </h2>
+
+          <div class="reference-item">
+            <div class="ref-name">Thai Quoc Khuong</div>
+            <div class="ref-role">Technical Manager</div>
+            <div class="ref-contact">
+              <span>📞 0945 192 199</span>
+            </div>
+          </div>
+
+          <div class="reference-item">
+            <div class="ref-name">Tran Viet Anh</div>
+            <div class="ref-role">Technical</div>
+            <div class="ref-contact">
+              <span
+                >📧
+                <a href="mailto:anhtv@binhtay-group.sabeco.com.vn"
+                  >anhtv@binhtay-group.sabeco.com.vn</a
+                ></span
+              >
+              <span>📞 0982 725 351</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

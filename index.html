@@ -3,202 +3,359 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV_NgôMinhThiên</title>
+    <title>Ngô Minh Thiên - CV Portfolio</title>
     <link
-      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        color: #e2e8f0;
+        overflow: hidden;
+      }
+
+      /* Animated background */
+      .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .bg-animation .circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.06;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .bg-animation .circle:nth-child(1) {
+        width: 500px;
+        height: 500px;
+        background: #3182ce;
+        top: -100px;
+        right: -100px;
+        animation-delay: 0s;
+      }
+
+      .bg-animation .circle:nth-child(2) {
+        width: 400px;
+        height: 400px;
+        background: #38a169;
+        bottom: -80px;
+        left: -80px;
+        animation-delay: -5s;
+      }
+
+      .bg-animation .circle:nth-child(3) {
+        width: 300px;
+        height: 300px;
+        background: #805ad5;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: -10s;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(30px, -30px) scale(1.05); }
+        50% { transform: translate(-20px, 20px) scale(0.95); }
+        75% { transform: translate(20px, 10px) scale(1.02); }
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 4px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        margin-bottom: 20px;
+      }
+
+      .name {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      .tagline {
+        font-size: 14px;
+        color: #94a3b8;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 48px;
+      }
+
+      .cards-wrapper {
+        display: flex;
+        gap: 32px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cv-card {
+        width: 320px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 36px 28px 28px;
+        text-decoration: none;
+        color: #e2e8f0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cv-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        border-radius: 16px 16px 0 0;
+        transition: height 0.4s ease;
+      }
+
+      .cv-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .cv-card:hover::before {
+        height: 6px;
+      }
+
+      /* Software Engineer card */
+      .card-se::before {
+        background: linear-gradient(90deg, #2b6cb0, #63b3ed);
+      }
+
+      .card-se:hover {
+        background: rgba(43, 108, 176, 0.08);
+        border-color: rgba(99, 179, 237, 0.3);
+      }
+
+      .card-se .card-icon {
+        background: linear-gradient(135deg, #2b6cb0, #3182ce);
+        box-shadow: 0 4px 16px rgba(49, 130, 206, 0.3);
+      }
+
+      .card-se .card-tag {
+        background: rgba(49, 130, 206, 0.15);
+        color: #90cdf4;
+        border-color: rgba(49, 130, 206, 0.25);
+      }
+
+      /* IT Support card */
+      .card-it::before {
+        background: linear-gradient(90deg, #276749, #68d391);
+      }
+
+      .card-it:hover {
+        background: rgba(39, 103, 73, 0.08);
+        border-color: rgba(104, 211, 145, 0.3);
+      }
+
+      .card-it .card-icon {
+        background: linear-gradient(135deg, #276749, #38a169);
+        box-shadow: 0 4px 16px rgba(56, 161, 105, 0.3);
+      }
+
+      .card-it .card-tag {
+        background: rgba(56, 161, 105, 0.15);
+        color: #9ae6b4;
+        border-color: rgba(56, 161, 105, 0.25);
+      }
+
+      .card-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin: 0 auto 20px;
+      }
+
+      .card-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      .card-desc {
+        font-size: 13px;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+
+      .card-tag {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1px solid;
+        font-weight: 500;
+      }
+
+      .card-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      .cv-card:hover .card-btn {
+        opacity: 1;
+      }
+
+      .card-btn .arrow {
+        transition: transform 0.3s;
+      }
+
+      .cv-card:hover .card-btn .arrow {
+        transform: translateX(4px);
+      }
+
+      .footer {
+        margin-top: 48px;
+        font-size: 12px;
+        color: #475569;
+      }
+
+      .footer a {
+        color: #64748b;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        color: #94a3b8;
+      }
+
+      @media (max-width: 700px) {
+        .name {
+          font-size: 28px;
+        }
+        .cards-wrapper {
+          flex-direction: column;
+          align-items: center;
+        }
+        .cv-card {
+          width: 100%;
+          max-width: 340px;
+        }
+      }
+    </style>
   </head>
-  <body class="text-sm">
-    <div class="pt-5 pl-5 pr-5 pb-3">
-      <!-- Header -->
-      <div class="flex items-center mb-3">
-        <!-- <img
-          src="avatar.jpg"
-          alt="avatar"
-          class="ml-5 w-16 h-16 rounded-full border border-gray-300"
-        /> -->
-        <h1 class="flex-1 text-center text-[20px] font-bold">NGÔ MINH THIÊN</h1>
-        <!-- <span class="mr-5 w-16 h-16"></span> -->
-      </div>
-      <div class="mt-2 grid grid-cols-3 items-center">
-        <a
-          class="inline-flex items-center justify-start"
-          href="mailto:minhngothien1@gmail.com"
-        >
-          <img class="mr-1 w-5" src="./icons/icons8-gmail.svg" alt="mail" />
-          minhngothien1@gmail.com
+  <body>
+    <div class="bg-animation">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
+    <div class="container">
+      <img src="./avatar.jpg" alt="Ngô Minh Thiên" class="avatar" />
+      <h1 class="name">Ngô Minh Thiên</h1>
+      <p class="tagline">Choose My Resume</p>
+
+      <div class="cards-wrapper">
+        <!-- Software Engineer CV -->
+        <a href="./cv-software-engineer.html" class="cv-card card-se">
+          <div class="card-icon">💻</div>
+          <h2 class="card-title">Software Engineer</h2>
+          <p class="card-desc">
+            Full-stack web development, enterprise applications, React
+            dashboards, and WordPress solutions.
+          </p>
+          <div class="card-tags">
+            <span class="card-tag">React</span>
+            <span class="card-tag">TypeScript</span>
+            <span class="card-tag">Python</span>
+            <span class="card-tag">MongoDB</span>
+            <span class="card-tag">Docker</span>
+          </div>
+          <span class="card-btn">
+            View Resume <span class="arrow">→</span>
+          </span>
         </a>
-        <div class="flex justify-center">
-          <a class="inline-flex items-center" href="tel:0987176434">
-            <img
-              class="mr-1 w-4"
-              src="./icons/icons8-phone-24.png"
-              alt="phone"
-            />
-            (+84)987176434
-          </a>
-        </div>
-        <a
-          class="inline-flex items-center justify-end"
-          href="https://github.com/phuocthien412"
-          target="_blank"
-        >
-          <img class="mr-1 w-5" src="./icons/icons8-github.svg" alt="github" />
-          phuocthien412
+
+        <!-- IT Support Engineer CV -->
+        <a href="./cv-it-support.html" class="cv-card card-it">
+          <div class="card-icon">🛠️</div>
+          <h2 class="card-title">IT Support Engineer</h2>
+          <p class="card-desc">
+            On-site & remote troubleshooting, system administration, networking,
+            and IT operations support.
+          </p>
+          <div class="card-tags">
+            <span class="card-tag">Windows OS</span>
+            <span class="card-tag">Microsoft 365</span>
+            <span class="card-tag">VPN</span>
+            <span class="card-tag">TeamViewer</span>
+            <span class="card-tag">Networking</span>
+          </div>
+          <span class="card-btn">
+            View Resume <span class="arrow">→</span>
+          </span>
         </a>
       </div>
 
-      <!-- Summary -->
-      <h1 class="mt-3 mb-1 px-1 text-[17px] uppercase"><b>Mục tiêu nghề nghiệp</b></h1>
-      <hr class="border-gray-900" />
-      <div class="mt-2 px-3 text-justify">
+      <div class="footer">
         <p>
-        Thành thạo lập trình với Java, PHP, JavaScript và sử dụng hiệu quả MSSQL, MySQL để phát triển ứng dụng web hiệu suất cao, dễ mở rộng. Mong muốn áp dụng kỹ năng lập trình và tư duy giải quyết vấn đề vào môi trường phát triển phần mềm chuyên nghiệp.
+          © 2026 Ngô Minh Thiên ·
+          <a href="https://github.com/phuocthien412" target="_blank">GitHub</a>
+          ·
+          <a href="https://portfolio.minhngothien2.workers.dev/" target="_blank"
+            >Portfolio</a
+          >
         </p>
-      </div>
-
-
-      <!-- Experience -->
-      <h1 class="mt-3 mb-1 px-1 text-[17px] uppercase">
-        <b>KINH NGHIỆM LÀM VIỆC</b>
-      </h1>
-      <hr class="border-gray-900" />
-      <div class="mt-2 px-3 text-justify">
-        <p><b>Intern Web Developer – ASIQN</b></p>
-        <p class="italic text-xs">04/2025 – 07/2025</p>
-        <ul class="list-disc ml-6">
-          <li>
-            Vai trò: Lập trình viên Backend
-          </li>
-          <li>
-            Tạo giao diện bằng EJS, HTML và thiết kế router bằng JavaScript kết nối với database.
-          </li>
-          <li>
-            Sử dụng Odoo18 và ngôn ngữ Python để quản lý thông tin tài khoản, tính lợi nhuận, hoa hồng, rủi ro.
-          </li>
-          <li>
-            Quản lý nạp rút tiền bằng: blockchain, crypto, bank. Tối ưu thời gian và quản lý giao dịch cho MT5.
-          </li>
-          <li>
-            Trang web: <a href="https://client.aisqn.com/" class="italic text-blue-600" target="_blank">https://client.aisqn.com/</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Skills -->
-      <h1 class="mt-3 mb-1 px-1 text-[17px] uppercase">
-        <b>KỸ NĂNG CHUYÊN MÔN</b>
-      </h1>
-      <hr class="border-gray-900" />
-      <div class="mt-2 px-3">
-        <table>
-          <tr>
-            <td style="width: 200px; vertical-align: top">
-              <b>NGÔN NGỮ</b>
-            </td>
-            <td style="vertical-align: top">C#, Java, PHP, JavaScript, Python</td>
-          </tr>
-          <tr>
-            <td style="width: 200px; vertical-align: top">
-              <b>FRAMEWORK </b>
-            </td>
-            <td style="vertical-align: top">Spring Boot, ASP.NET Core, Node.js, Entity Framework</td>
-          </tr>
-          <tr>
-            <td style="width: 200px; vertical-align: top"><b>FRONT-END</b></td>
-            <td style="vertical-align: top">
-              HTML, CSS, EJS
-            </td>
-          </tr>
-          <tr>
-            <td style="width: 200px; vertical-align: top"><b>BACK-END</b></td>
-            <td style="vertical-align: top">
-              ASP.NET Core, Spring Boot, PHP, Nodejs
-            </td>
-          </tr>
-          <tr>
-            <td style="width: 200px; vertical-align: top"><b>CƠ SỞ DỮ LIỆU</b></td>
-            <td style="vertical-align: top">MySQL, MongoDB, MSSQL Server, PostgreSQL</td>
-          </tr>
-          <tr>
-            <td style="width: 200px; vertical-align: top"><b>CÔNG CỤ & PLATFORM</b></td>
-            <td style="vertical-align: top">
-             GitHub, Figma, Postman, VS Code, Microsoft Project, Odoo18
-            </td>
-          </tr>
-          <tr>
-            <td style="width: 200px; vertical-align: top">
-              <b>KỸ NĂNG MỀM</b>
-            </td>
-            <td style="vertical-align: top">Giao tiếp và làm việc nhóm, Quản lý thời gian</td>
-          </tr>
-        </table>
-      </div>
-
-      <!-- Projects -->
-      <h1 class="mt-3 mb-1 px-1 text-[17px] uppercase"><b>DỰ ÁN CÁ NHÂN</b></h1>
-      <hr class="border-gray-900" />
-      <div class="px-4 mt-2 flex flex-col gap-4">
-        <div>
-          <p><b>Website Động Vật</b></p>
-          <p class="italic text-xs">03/2024 – 05/2024</p>
-          <div class="px-4">
-            <p>Số lượng thành viên: 2</p>
-            <p>
-              Mô tả chức năng chính: CRUD user, admin, Model tìm con vật bằng hình ảnh
-              <br />
-              <span class="italic text-xs"
-                >C#, ASP.NET Core, HTML, CSS, Bootstrap, MSSQL</span
-              >
-            </p>
-            <p>
-              Link:
-              <a
-                href="https://github.com/mayuna8152/DoAnCoSo"
-                class="italic font-bold text-blue-600"
-                target="_blank"
-                >github.com/mayuna8152/DoAnCoSo</a
-              >
-            </p>
-          </div>
-        </div>
-        <div>
-          <p><b>Website Tìm Kiếm Thông Tin Động Vật</b></p>
-          <p class="italic text-xs">02/2025 – 04/2025</p>
-          <div class="px-4">
-            <p>Số lượng thành viên: 2</p>
-            <p>
-              Mô tả chức năng chính: CRUD user, admin, Model tìm con vật bằng hình ảnh, app mobile hiện hình ảnh con vật.
-              <br />
-              <span class="italic text-xs">
-                PHP, HTML, CSS, MySQL
-              </span>
-            </p>
-            <p>
-              Trang web:
-              <a
-                href="http://ngominhthien.id.vn"
-                class="italic font-bold text-blue-600"
-                target="_blank"
-                >ngominhthien.id.vn</a
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Education -->
-      <h1 class="ml-2 mb-1 mt-4 uppercase text-[17px]"><b>HỌC VẤN</b></h1>
-      <hr class="border-gray-900" />
-      <div class="mt-2 px-4">
-        <div class="flex items-center justify-between">
-          <h1 class="text-md font-bold">Đại học HUTECH</h1>
-          <p class="text-xs">Thành phố Hồ Chí Minh, Việt Nam</p>
-          <p class="text-xs">09/2021 – 09/2025</p>
-          <p class="text-xs">GPA: 3.21</p>
-        </div>
-
       </div>
     </div>
   </body>
